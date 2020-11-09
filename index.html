@@ -10,19 +10,28 @@
     <link rel='stylesheet' href='assets/style.css' />
 </head>
 <body>
-    <div class='container container-color mt-5'>
-        <div id='container-start'>
+    <!-- Displays the starting block with quiz title, some intro text, and the start button. -->
+    <div class='container container-color'>
+        <div id='start-prompt'>
             <h1>Do you have what it takes to be a Quizard?</h1>
-            <h2>Quizard or Lizard? Press Start to find out!</h2>
+            <h2>Test your SciFi knowledge and find out if you are a<br/>Quizard or Lizard!</h2>
+            <h3>Press Start to Find Out!</h3>
             <button id='start' class='btn btn-primary btn-color'>Start Quiz!</button>
         </div>
-        <div id='container-question' style='display: none'>
+        
+    <!-- Displays question block where a question with the appropriate answer buttons will display. -->
+        <div id='question-container' style='display: none'>
             <h2 id='question-text'></h2>
             <div id='answers'></div>
         </div>
     </div>
 
+    <!-- Displays the timer. Is pervasive and will show on all screens.  -->
     <div class='timer'>Time <span id='time'>0</span></div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
     <script src='assets/script.js'></script>
 </body>

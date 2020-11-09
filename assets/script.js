@@ -8,37 +8,43 @@ const answerDiv = document.querySelector('#answers')
 const questions = [
     {
         text: 'Han Solo was able to make the Kessel Run in slightly over 12 parsecs because he __________.',
-        answers: ['took a shortcut', 'exceeded warp 10, breaking a speed record', 'called an Uber', 'he spent his life training for the run']
+        answers: ['took a shortcut', 'exceeded warp 10, breaking a speed record', 'called an Uber', 'he spent his life training for the run'],
         correctIndex: 0,
     },
+
     {
         text: 'Data is an android that is utilizes __________ to function and store information.',
-        answers: ['a 500 zettabyte hard drive', 'electromagnetics', 'a positronic brain', 'cloud-based apps and file sharing']
+        answers: ['a 500 zettabyte hard drive', 'electromagnetics', 'a positronic brain', 'cloud-based apps and file sharing'],
         correctIndex: 2,
     },
+
     {
         text: 'Malcolm \'Mal\' Reynolds was a former ___________ sergeant during the civil war.',
-        answers: ['Confederate', 'Union', 'gunnery', 'Browncoat']
+        answers: ['Confederate', 'Union', 'gunnery', 'Browncoat'],
         correctIndex: 3,
     },
+
     {
         text: 'Daleks are best known for their appearance and their battle cry, __________',
-        answers: ['Exterminate!', 'Revenge!', 'Vive les Robots! ', 'Fire! Fire! Fire!']
+        answers: ['Exterminate!', 'Revenge!', 'Vive les Robots! ', 'Fire! Fire! Fire!'],
         correctIndex: 0,
     },
+
     {
-        text: 'Bender's full name is __________.',
-        answers: ['Gender Bender', 'Bender Bending Rodriguez', 'Amigo Bandido \'Bending\' de Acero', 'Frank \'Going on a Bender\' Jones']
+        text: 'Bender\'s full name is __________.',
+        answers: ['Gender Bender', 'Bender Bending Rodriguez', 'Amigo Bandido \'Bending\' de Acero', 'Frank \'Going on a Bender\' Jones'],
         correctIndex: 1,
     },
+
     {
         text: 'The antagonists in Battlestar Galactica were called __________.',
-        answers: ['Chronicoms', 'Romulans', 'Cylons', 'Zentradi']
+        answers: ['Chronicoms', 'Romulans', 'Cylons', 'Zentradi'],
         correctIndex: 2,
     },
+    
     {
         text: 'Mandalore the Great wielded __________.',
-        answers: ['The Green Destiny', 'Excalibur', 'The Sword of Gryffindor', 'The Darksaber']
+        answers: ['The Green Destiny', 'Excalibur', 'The Sword of Gryffindor', 'The Darksaber'],
         correctIndex: 3,
     },
 ];
@@ -73,7 +79,7 @@ startBtn.addEventListener('click', function (e) {
 
 
 
-answerDev.addEventListener('click', function (e){
+answerDiv.addEventListener('click', function (e){
     e.preventDefault();
 
     if (!e.target.matches('button')) return;
