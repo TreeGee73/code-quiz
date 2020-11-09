@@ -1,0 +1,41 @@
+body {
+    background-image: url("lightbulb.jpg");
+    background-size: auto;
+    background-color: #4c4c4f;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+}
+
+.timer {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    border: solid 1px #efe5e5;
+    background-color: #79797b;
+    padding: 1rem;
+    font-weight: bold;
+}
+
+.container-color {
+    background-color: rgba(122, 153, 196, 0.75);
+    color: #000;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.btn-color {
+    background-color: #0a2851;
+    border: solid 1px #7a99c4;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+h1 {
+    font-weight: bolder;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+}
+
+h2 {
+    font-style: italic;
+}
