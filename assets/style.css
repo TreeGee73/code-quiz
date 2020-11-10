@@ -45,3 +45,19 @@ h2 {
     padding-top: 2rem;
     padding-bottom: 1rem;
 }
+
+.initials-form {
+    background-color: rgba(122, 153, 196, 0.75);
+    color: #000;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    font-size: larger;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+}
+
+.score-list {
+    font-size: larger;
+    color: #000;
+}

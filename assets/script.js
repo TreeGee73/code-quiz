@@ -1,11 +1,28 @@
 // Variables
+// Timer
+const timeEl = document.querySelector('#time');
+let timeLeft = 60;
+let timeTick ;
+
+// Start block
 const startBtn = document.querySelector('#start');
 const startPrompt = document.querySelector('#start-prompt');
+
+// Question & answers block
 const questionContainer = document.querySelector('#question-container');
 const questionText = document.querySelector('#question-text');
 const answerDiv = document.querySelector('#answers');
-var timeEl = document.querySelector('#time');
-var mainEl = document.getElementById("main");
+
+// User score block
+const scoreContainer = document.querySelector('#score-container');
+const scoreDiv = document.querySelector('#score');
+const recordScore = document.querySelector('#record-score');
+const initialsDiv = document.querySelector('#initials-input');
+const userInitials = document.querySelector("#user-initials");
+
+// High score block
+const highScoreDiv = document.querySelector('#high-score');
+const hScoreContainer = document.querySelector('#hscore-container');
 
 // Questions Array: Quiz questions and answers
 const questions = [
@@ -57,18 +74,35 @@ let questionIndex = 0;
 // registering event handlers
 startBtn.addEventListener('click', handleStartClick);
 answerDiv.addEventListener('click', handleAnswerClick);
+recordScore.addEventListener('click', handleSubmitClick);
 
-// Functions - Timer, Start Click, Questions, & Answer Click
+
+// Functions
 function handleStartClick(e) {
-    // start the timer
-    
-    // hide start prompt
+    // Hide start prompt
     startPrompt.style.display = 'none';
 
-    // show questions and answers 
+    // Start counter count down; use setInterval to determine what happens each second
+    timeTick = setInterval(countDown, 1000);
+
+    // Show questions and answers 
     questionContainer.style.display = 'block';
     
     administerQuiz();
+};
+
+
+function countDown() {
+    // Display timer & start countdown
+    timeEl.innerHTML = `Time: ${timeLeft}`;
+    // Stop quiz
+    if (timeLeft < 1) {
+        clearTimeout(timeTick);
+
+        // Display score block
+        displayScore();
+    }
+    timeLeft--;
 };
 
 function administerQuiz() {
@@ -111,17 +145,80 @@ function handleAnswerClick(e){
         const correctAnswer = question.answers[question.correctIndex];
         
         // Compare correct answer to user's response
-        if (userAnswer === correctAnswer) {
+            if (userAnswer === correctAnswer) {
             // If correct, move to next question.
-            console.log('That is correct.');
-        }
-        else {
+            console.log('Correct');
+            }
+            else {
             // If incorrect, remove 10 seconds from time, move to next question.
-            console.log('That was incorrect.')
-        }
-        questionIndex++;
+            timeLeft -= 10;
+            console.log('Incorrect')
+            }
+            questionIndex++;
+
+            if (questionIndex === questions.length) {
+                clearTimeout(timeTick);
+                return displayScore();
+            }
+            
+            administerQuiz();
         // Are there more questions?
         // If no more questions, end the game
+        // Display the high score block and total remaining time = high score
         // Else continue to administer quiz
-            administerQuiz()
+        // Else check timeLeft if timeLeft <= 0 end quiz
+        // Display the high score block and total remaining time = high score
 };
+
+function displayScore() {    
+    // Hide everything
+    questionContainer.style.display = 'none';
+    timeEl.style.display = 'none';
+
+    // Show score block
+    scoreContainer.style.display = 'block';
+
+    // Set the text content for the HTML element that displays the score
+    scoreDiv.textContent = `Your score is ${timeLeft}`;
+    
+    // Allow user to record their score
+    // Write score to local, prepend it the score list
+    
+
+};
+
+// function displayMessage(type, message) {
+//     msgDiv.textContent = message;
+//     msgDiv.setAttribute("class", type);
+//   }
+
+function handleSubmitClick(e) {
+  e.preventDefault();
+    var user = {
+        userInitials: userInitials.value.trim(),
+        score: timeLeft,
+    };
+  
+    console.log(user);
+    localStorage.setItem('user', JSON.stringify(user));
+
+    renderHighScore();
+    
+    // Save email and password to localStorage and render the last registered.
+    localStorage.setItem("initials", userInitials);
+        userInitials.textContent = userInitials;
+  };
+
+function renderHighScore() {
+  // Hide score block
+  scoreContainer.style.display = 'none';
+
+  // Show high score block
+  hScoreContainer.style.display = 'block';
+  
+  var highScoreList = localStorage.getItem('user');
+  highScoreList = JSON.parse(highScoreList);
+
+  highScoreDiv.textContent = highScoreList.userInitials + ': ' + highScoreList.score;
+    
+    };

@@ -12,6 +12,9 @@
     <!-- CSS End -->
 </head>
 <body>
+    <!-- Displays the timer. Is pervasive and will show on all screens.  -->
+    <div id='time' class='timer'>Time: 60</div>
+    
     <!-- Displays the starting block with quiz title, some intro text, and the start button. -->
     <div class='container container-color'>
         <div id='start-prompt'>
@@ -26,10 +29,29 @@
             <h3 class='question-text' id='question-text'></h3>
             <div id='answers'></div>
         </div>
-    </div>
+        
+    <!-- Displays score block where the user's score will display along with previous scores (once game has been played more than once). -->
+        <div id='score-container' style='display: none' class="card initials-form">
+            <h3 class='question-text'>Quizard or Lizard?<br/>What's your score?</h3>
+            <div id='score'></div>
+            <div class="card initials-form">
+                <form method="POST">
+                <div class="input-group" id="initials-input">
+                    <label for="initials">Enter your initials: </label>
+                    <input type="text" name="initials" id="user-initials" placeholder="ABC" />
+                </div>
+                <div id="msg"></div>
+                <button id="record-score">Record Score</button>
+                </form>
+            </div>
+        </div>
 
-    <!-- Displays the timer. Is pervasive and will show on all screens.  -->
-    <div class='timer'>Time <span id='time'>0</span></div>
+    <!-- Displays score block where the user's score will display along with previous scores (once game has been played more than once). -->
+        <div id='hscore-container' style='display: none'>
+            <h3 class='question-text'>High Scores</h3>
+            <div class="score-list" id='high-score'></div>
+        </div>
+    </div>
 
     <!-- JavaScript Start-->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
