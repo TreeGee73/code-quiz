@@ -46,14 +46,18 @@ h2 {
     padding-bottom: 1rem;
 }
 
-.initials-form {
-    background-color: rgba(122, 153, 196, 0.75);
+.score-display {
     color: #000;
     align-items: center;
     align-content: center;
     text-align: center;
     font-size: larger;
     padding-top: 2rem;
+    padding-bottom: 1rem;
+}
+
+.record-score {
+    padding-top: .5rem;
     padding-bottom: 1rem;
 }
 

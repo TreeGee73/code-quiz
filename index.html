@@ -31,16 +31,17 @@
         </div>
         
     <!-- Displays score block where the user's score will display along with previous scores (once game has been played more than once). -->
-        <div id='score-container' style='display: none' class="card initials-form">
+        <div id='score-container' style='display: none'>
             <h3 class='question-text'>Quizard or Lizard?<br/>What's your score?</h3>
-            <div id='score'></div>
-            <div class="card initials-form">
+            <div class='score-display' id='score'></div>
+            <div class='score-display'>
                 <form method="POST">
-                <div class="input-group" id="initials-input">
+                <div id="initials-input">
                     <label for="initials">Enter your initials: </label>
                     <input type="text" name="initials" id="user-initials" placeholder="ABC" />
                 </div>
-                <div id="msg"></div>
+                <br />
+                <div id="msg" class="record-score"></div>
                 <button id="record-score">Record Score</button>
                 </form>
             </div>
