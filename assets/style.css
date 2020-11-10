@@ -40,3 +40,8 @@ h2 {
     font-style: italic;
     padding-bottom: 1rem;
 }
+
+.question-text {
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+}

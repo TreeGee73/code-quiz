@@ -1,10 +1,13 @@
+// Variables
 const startBtn = document.querySelector('#start');
-const startPromp = document.querySelector('#container-start');
-const questionCont = document.querySelector('#container-question');
+const startPrompt = document.querySelector('#start-prompt');
+const questionContainer = document.querySelector('#question-container');
 const questionText = document.querySelector('#question-text');
-const answerDiv = document.querySelector('#answers')
+const answerDiv = document.querySelector('#answers');
+var timeEl = document.querySelector('#time');
+var mainEl = document.getElementById("main");
 
-// Quiz questions and answers
+// Questions Array: Quiz questions and answers
 const questions = [
     {
         text: 'Han Solo was able to make the Kessel Run in slightly over 12 parsecs because he __________.',
@@ -49,47 +52,76 @@ const questions = [
     },
 ];
 
-// registering a click event handler
-startBtn.addEventListener('click', function (e) {
+let questionIndex = 0;
+
+// registering event handlers
+startBtn.addEventListener('click', handleStartClick);
+answerDiv.addEventListener('click', handleAnswerClick);
+
+// Functions - Timer, Start Click, Questions, & Answer Click
+function handleStartClick(e) {
     // start the timer
-    // hide start prompt
-    startPromp.style.display = 'none';
-
-    // show questions and answers
-    questionCont.style.display = 'block';
-
-    // Set the text content for the HTML element that displays the question
-    questionText.textContent = questions [questionIndex].text;
     
+    // hide start prompt
+    startPrompt.style.display = 'none';
+
+    // show questions and answers 
+    questionContainer.style.display = 'block';
+    
+    administerQuiz();
+};
+
+function administerQuiz() {
+    // Create a variable to store the current question
+    const currentQuestion = questions[questionIndex];
+    
+    // Set the text content for the HTML element that displays the question
+    questionText.textContent = currentQuestion.text;
+    
+    // Clear previous answer buttons
+    answerDiv.innerHTML='';
+
     // Create a button for each question and possible answer
-    for (let i = 0; i < questions[questionIndex].answers.length; i++) {
+    for (let i = 0; i < currentQuestion.answers.length; i++) {
         // Create a variable to store the answer text
-        const answer = questions[questionIndex].answers[i];
+        const answer = currentQuestion.answers[i];
         // Create a button for each answer
         const btn = document.createElement('button');
-        // Set the button class='btn btn-primary'
-        btn.setAttribute('class', 'btn btn-primary');
+        // Set the button class='btn btn-primary btn-color'
+        btn.setAttribute('class', 'btn btn-primary btn-color');
         // Set the button text to the answers text
         btn.textContent = answer;
         // Append the button to the answers div
         answerDiv.appendChild(btn);
-    }
+    };
+};
 
-});
-
-
-
-answerDiv.addEventListener('click', function (e){
+function handleAnswerClick(e){
     e.preventDefault();
+        if (!e.target.matches('button')) return;
+        
+        // Did the user chose the correct answer?
+        // Store the user's answer
+        const userAnswer = e.target.textContent;
 
-    if (!e.target.matches('button')) return;
-
-    // Did the user chose the correct answer?
-    // Retrieve current question
-    const question = questions[questionIndex];
-    // Get correct answer
-    const correctAnswer = question.answers[question.correctIndex];
-    // Compare correct answer to user's response
-    // If correct, move to next question.
-    // If incorrect, remove 10 seconds from time, move to next question.
-})
+        // Retrieve current question
+        const question = questions[questionIndex];
+        
+        // Get correct answer
+        const correctAnswer = question.answers[question.correctIndex];
+        
+        // Compare correct answer to user's response
+        if (userAnswer === correctAnswer) {
+            // If correct, move to next question.
+            console.log('That is correct.');
+        }
+        else {
+            // If incorrect, remove 10 seconds from time, move to next question.
+            console.log('That was incorrect.')
+        }
+        questionIndex++;
+        // Are there more questions?
+        // If no more questions, end the game
+        // Else continue to administer quiz
+            administerQuiz()
+};
