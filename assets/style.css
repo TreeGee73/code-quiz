@@ -21,13 +21,29 @@ body {
     color: #000;
     margin-top: 2rem;
     margin-bottom: 2rem;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 
 .btn-color {
     background-color: #0a2851;
     border: solid 1px #7a99c4;
     margin-bottom: 1rem;
     margin-top: 1rem;
+}
+
+.btn-group {
+    text-align: left;
+    align-content: center;
+    cursor: pointer;
+    width: 40%;
+    display: block flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
 }
 
 h1 {
@@ -44,6 +60,17 @@ h2 {
 .question-text {
     padding-top: 2rem;
     padding-bottom: 1rem;
+}
+
+.result {
+    border-top: solid 2px #4c4c4f;
+    font-size: x-large;
+    font-style: italic;
+    margin-top: 5rem;
+    padding-top: 2rem;
+    display: flex;
+    align-content: center;
+    justify-content: center;
 }
 
 .score-display {

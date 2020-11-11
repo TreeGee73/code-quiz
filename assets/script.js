@@ -12,6 +12,7 @@ const startPrompt = document.querySelector('#start-prompt');
 const questionContainer = document.querySelector('#question-container');
 const questionText = document.querySelector('#question-text');
 const answerDiv = document.querySelector('#answers');
+const resultDiv = document.querySelector('#result')
 
 // User score block
 const scoreContainer = document.querySelector('#score-container');
@@ -122,7 +123,7 @@ function administerQuiz() {
         // Create a button for each answer
         const btn = document.createElement('button');
         // Set the button class='btn btn-primary btn-color'
-        btn.setAttribute('class', 'btn btn-primary btn-color');
+        btn.setAttribute('class', 'btn btn-primary btn-color btn-group');
         // Set the button text to the answers text
         btn.textContent = answer;
         // Append the button to the answers div
@@ -147,12 +148,14 @@ function handleAnswerClick(e){
         // Compare correct answer to user's response
             if (userAnswer === correctAnswer) {
             // If correct, move to next question.
-            console.log('Correct');
+            resultDiv.setAttribute('class', 'result');
+            resultDiv.textContent = 'Correct!';
             }
             else {
             // If incorrect, remove 10 seconds from time, move to next question.
             timeLeft -= 10;
-            console.log('Incorrect')
+            resultDiv.setAttribute('class', 'result');
+            resultDiv.textContent = 'Incorrect!';
             }
             questionIndex++;
 
