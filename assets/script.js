@@ -24,6 +24,8 @@ const userInitials = document.querySelector("#user-initials");
 // High score block
 const highScoreDiv = document.querySelector('#high-score');
 const hScoreContainer = document.querySelector('#hscore-container');
+const rePlay = document.querySelector('#play-again');
+const clearScore = document.querySelector('#clear');
 
 // Questions Array: Quiz questions and answers
 const questions = [
@@ -76,6 +78,8 @@ let questionIndex = 0;
 startBtn.addEventListener('click', handleStartClick);
 answerDiv.addEventListener('click', handleAnswerClick);
 recordScore.addEventListener('click', handleSubmitClick);
+rePlay.addEventListener('click', handleReplayClick);
+clearScore.addEventListener('click', handleClearClick);
 
 
 // Functions
@@ -225,3 +229,16 @@ function renderHighScore() {
   highScoreDiv.textContent = highScoreList.userInitials + ': ' + highScoreList.score;
     
     };
+
+    function handleReplayClick() {
+        // Hide high score block
+        hScoreContainer.style.display = 'none';
+
+        // Show start block
+        startPrompt.style.display = 'block';
+    }
+
+    function handleClearClick() {
+        // Clear score
+        highScoreDiv.textContent = '';
+    }
