@@ -151,15 +151,17 @@ function handleAnswerClick(e){
         
         // Compare correct answer to user's response
             if (userAnswer === correctAnswer) {
-            // If correct, move to next question.
-            resultDiv.setAttribute('class', 'result');
-            resultDiv.textContent = 'Correct!';
+            // If correct, indicate and move to next question.
+            // resultDiv.setAttribute('class', 'result');
+            // resultDiv.textContent = 'Correct!';
+            alert('Correct!');
             }
             else {
-            // If incorrect, remove 10 seconds from time, move to next question.
+            // If incorrect, indicate, remove 10 seconds from time, move to next question.
             timeLeft -= 10;
-            resultDiv.setAttribute('class', 'result');
-            resultDiv.textContent = 'Incorrect!';
+            // resultDiv.setAttribute('class', 'result');
+            // resultDiv.textContent = 'Incorrect!';
+            alert('Incorrect!');
             }
             questionIndex++;
 
@@ -186,32 +188,31 @@ function displayScore() {
     scoreContainer.style.display = 'block';
 
     // Set the text content for the HTML element that displays the score
+    if (timeLeft < 0) {
+        scoreDiv.textContent = 'Your score is 0'
+    }
+    else {
     scoreDiv.textContent = `Your score is ${timeLeft}`;
-    
-    // Allow user to record their score
-    // Write score to local, prepend it the score list
+    }
     
 
 };
 
-// function displayMessage(type, message) {
-//     msgDiv.textContent = message;
-//     msgDiv.setAttribute("class", type);
-//   }
 
 function handleSubmitClick(e) {
   e.preventDefault();
+  // Allow user to record score
     var user = {
         userInitials: userInitials.value.trim(),
         score: timeLeft,
     };
   
-    console.log(user);
+    // Create user on local storage and set it to the stringified data of the user var
     localStorage.setItem('user', JSON.stringify(user));
 
     renderHighScore();
     
-    // Save email and password to localStorage and render the last registered.
+    // Save initials and score to localStorage and render the last registered.
     localStorage.setItem("initials", userInitials);
         userInitials.textContent = userInitials;
   };
@@ -225,17 +226,14 @@ function renderHighScore() {
   
   var highScoreList = localStorage.getItem('user');
   highScoreList = JSON.parse(highScoreList);
-
+// Display user's initial and score
   highScoreDiv.textContent = highScoreList.userInitials + ': ' + highScoreList.score;
     
     };
 
     function handleReplayClick() {
-        // Hide high score block
-        hScoreContainer.style.display = 'none';
-
-        // Show start block
-        startPrompt.style.display = 'block';
+        // Restart the Quiz
+        window.location.reload();
     }
 
     function handleClearClick() {
