@@ -151,19 +151,17 @@ function handleAnswerClick(e){
         
         // Compare correct answer to user's response
             if (userAnswer === correctAnswer) {
-            // If correct, indicate and move to next question.
-            // resultDiv.setAttribute('class', 'result');
-            // resultDiv.textContent = 'Correct!';
-            alert('Correct!');
+                displayCorrect();
+            // alert('Correct!');
             }
             else {
             // If incorrect, indicate, remove 10 seconds from time, move to next question.
             timeLeft -= 10;
-            // resultDiv.setAttribute('class', 'result');
-            // resultDiv.textContent = 'Incorrect!';
-            alert('Incorrect!');
+            displayIncorrect();
+            // alert('Incorrect!');
             }
-            questionIndex++;
+            setTimeout(clearResults, 1000, questionIndex++);
+            
 
             if (questionIndex === questions.length) {
                 clearTimeout(timeTick);
@@ -178,6 +176,23 @@ function handleAnswerClick(e){
         // Else check timeLeft if timeLeft <= 0 end quiz
         // Display the high score block and total remaining time = high score
 };
+
+function displayCorrect() {
+    // display correct answer div
+    resultDiv.style.display = 'block';
+    resultDiv.textContent = 'Correct!';
+};
+
+function displayIncorrect(){
+    // set attributes for incorrect answers
+    resultDiv.style.display = 'block';
+    resultDiv.textContent = 'Incorrect!';
+};
+
+function clearResults(){
+    resultDiv.style.display = 'none';
+}
+
 
 function displayScore() {    
     // Hide everything
