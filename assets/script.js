@@ -119,6 +119,8 @@ function administerQuiz() {
     
     // Clear previous answer buttons
     answerDiv.innerHTML='';
+    // Clear previous results
+    clearResults();
 
     // Create a button for each question and possible answer
     for (let i = 0; i < currentQuestion.answers.length; i++) {
@@ -152,23 +154,20 @@ function handleAnswerClick(e){
         // Compare correct answer to user's response
             if (userAnswer === correctAnswer) {
                 displayCorrect();
-            // alert('Correct!');
             }
             else {
             // If incorrect, indicate, remove 10 seconds from time, move to next question.
-            timeLeft -= 10;
-            displayIncorrect();
-            // alert('Incorrect!');
+                timeLeft -= 10;
+                displayIncorrect();
             }
-            setTimeout(clearResults, 1000, questionIndex++);
-            
+                questionIndex++
 
             if (questionIndex === questions.length) {
                 clearTimeout(timeTick);
                 return displayScore();
             }
-            
-            administerQuiz();
+          
+            setTimeout(administerQuiz, 1000);
         // Are there more questions?
         // If no more questions, end the game
         // Display the high score block and total remaining time = high score
@@ -221,29 +220,39 @@ function handleSubmitClick(e) {
         userInitials: userInitials.value.trim(),
         score: timeLeft,
     };
-  
-    // Create user on local storage and set it to the stringified data of the user var
-    localStorage.setItem('user', JSON.stringify(user));
 
-    renderHighScore();
+    
+    var scores = JSON.parse(localStorage.getItem('highscores')) || [];
+    scores.push(user);
+
+    // Create user on local storage and set it to the stringified data of the user var
+    localStorage.setItem('highscores', JSON.stringify(scores));
+
+    renderHighScore(user);
     
     // Save initials and score to localStorage and render the last registered.
-    localStorage.setItem("initials", userInitials);
-        userInitials.textContent = userInitials;
+    // localStorage.setItem("initials", userInitials);
+    // userInitials.textContent = userInitials;
   };
 
-function renderHighScore() {
+function renderHighScore(user) {
   // Hide score block
   scoreContainer.style.display = 'none';
 
   // Show high score block
   hScoreContainer.style.display = 'block';
   
-  var highScoreList = localStorage.getItem('user');
-  highScoreList = JSON.parse(highScoreList);
-// Display user's initial and score
-  highScoreDiv.textContent = highScoreList.userInitials + ': ' + highScoreList.score;
-    
+  // Display user's initial and score
+  highScoreDiv.textContent = user.userInitials + ': ' + user.score;
+  
+    var highScoreList = localStorage.getItem('highscores');
+    highScoreList = JSON.parse(highScoreList);
+
+    // Sort highscores by highest to lowest score
+    // Display table (max 10 rows and 2 columns)
+    // Loop through players and create a row for each of the top 10 players
+    // Populate column 1 with player info, column 2 with score
+    // Append new row to "table div" <--make me
     };
 
     function handleReplayClick() {
