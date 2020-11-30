@@ -46,17 +46,17 @@ Once the player submits enter, they are taken to the high score screen where the
 
 <p><img src="assets/high_score_cleared.jpg" alt="High Score Screen with Player's Initials and Score Cleared" title="High Score Screen with Player's Initials and Score Cleared"></p>
 
+## Technology
+
+CSS Framework: [Bootstrap](https://getbootstrap.com/)
+Bootstrap Depends on [JQuery](https://jquery.com/) and [JavaScript](https://www.javascript.com/) so these are also implimented on this site.
+
 ## Link
 
-This app can be accessed at https://treegee73.github.io/code-quiz/
-
-## Challenges
-
-I am still working out two challenged with the code, appending high scores to the high score screen and displaying the correct / incorrect after answer selection on the screen rather than as alerts.
-
-For the correct / incorrect I do have working code that will display accordingly if a the answer is correct or incorrect, however I could not clear that information before moving to the next question. Because this was not the desired effect, I temporarily utilize alerts to notify the player if their answer is correct or incorrect.
-
-For the append high score issue, I understand how to append to the page and create a list, however I could not get that to work with storing locally to the device. I believe it to be a simple misunderstanding of how data is stored locally and will be working to make this improvement as well.
+This app can be accessed at [code-quiz](https://treegee73.github.io/code-quiz/)
 
 ## Credits
-Background image is a free to use image that was obtained from Pexels.com.
+Background image is a free to use image that was obtained from [Pexels.com](https://www.pexels.com/).
+
+## Contact
+Contact me at [treegee73@gmail.com](mailto:treegee73@gmail.com)
