@@ -59,4 +59,4 @@ This app can be accessed at [code-quiz](https://treegee73.github.io/code-quiz/)
 Background image is a free to use image that was obtained from [Pexels.com](https://www.pexels.com/).
 
 ## Contact
-Contact me at [treegee73@gmail.com](mailto:treegee73@gmail.com)
+If you have any questions or need to contact me about this app, visit my GitHub page at [TreeGee73](https://github.com/TreeGee73).
