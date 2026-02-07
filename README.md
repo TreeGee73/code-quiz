@@ -1,3 +1,13 @@
+## 📚 Educational Project
+
+This project was completed as part of University of Arizona Full-Stack Web Development Bootcamp to demonstrate understanding of specific concepts like: HTML, CSS & JavaScript.<br>
+
+**Status:** Archived - No longer under active development<br>
+**Purpose:** Portfolio demonstration of technical concepts<br>
+**Completed:** November 2020
+
+---
+
 # code-quiz
 
 The purpose of this project is to create a quiz that utilizes JavaScript to manage what is displayed by interfacing with the DOM rather than making changes to the HTML. This is a good way to avoid "repeating yourself" when creating a dynamic page. This method will listen for events like a mouse click and then respond to the event, as well as allow for the creation of elements, manipulation of elements (change attributes, add content, etc.), and creating a locally stored record of data based on form input.
